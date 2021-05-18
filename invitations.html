@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Only Slide  UP Caption Hover Effect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+:root {
+  --surface-color: #fff;
+  --curve: 40;
+  --bg-pink:#fef8f8;
+  --black-color:#6a515e;
+  --text-color:#d7bdca;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  /*background-color: var(--bg-pink);*/
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+  gap:2rem;
+  margin:4rem 5vw;
+  padding:0;
+  list-style: none;
+}
+.card {
+  position: relative;
+  display: block;
+  height: 100%;
+  border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
+   -webkit-box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.7);
+}
+.card__image{
+  width:100%;
+  height:auto;
+}
+.card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: calc(var(--curve) * 1px);
+  background-color: var(--surface-color);
+  transform: translateY(100%);
+  transition: 0.2s ease-in-out;
+}
+.card:hover .card__overlay{
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
+.card__header{
+  position: relative;
+  display:flex;
+  align-items: center;
+  gap:2rem;
+  border-radius: calc(var(--curve) * 1px) 0 0 0; 
+  background-color: var(--surface-color);
+  padding:2em;
+  transform: translateY(-100%); 
+  transition: 0.2s ease-in-out;
+}
+.card__arc{
+  width:5em;
+  height:5em;
+  position:absolute;
+  bottom:100%;
+  right:0;
+  z-index: 1;
+}
+.card__arc path{
+  fill:var(--surface-color);
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}
+.card:hover .card__header{
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+}
+.card__thumb{
+  flex-shrink: 0;
+  width:3.125em;
+  height:3.125em;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.card__title{
+  font-size:1em;
+  margin:0 0 0.3em;
+  color:var(--black-color);
+}
+.card__status{
+  font-size:0.8em;
+  color:var(--text-color);
+}
+.card__description{
+  padding:0 2em 2em;
+  margin:0;
+  color:var(--text-color);
+  display:-webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}      
+    </style>
+</head>
+<body> 
+
+  <ul class="nav bg-white py-2 px-lg-5">
+  <div class='navbar-brand d-flex align-items-center header text-dark'>Xam</div>
+  <li class="nav-item">
+    <a class="nav-link text-dark" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link  text-dark" href="#works">My exams</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link  text-dark" href="#services">Create quiz</a>
+  </li>
+ <li class="nav-item">
+    <a class="nav-link  text-dark" href="#services">Messages</a>
+  </li>
+</ul>
+<div class="container  text-center pt-5">
+   <div class="row pt-5">
+      <div class="col-lg-6 mx-auto">
+        <h1 class="fw-light">Exam Invitations</h1>
+        <div class="lead text-muted">
+           The exam invitations will be displayed here. You can also review your previous exams.
+        </div>
+      </div> 
+    </div>
+</div>
+  <ul class="cards">
+    <li>
+      <a href="cards test.html" class="card">
+        <img src="img/art beer.jpg" class="card__image" alt="">
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+              <path />
+            </svg>
+            <img src="img/ad3.jpg" alt="" class="card__thumb">
+            <div class="card__header-text">
+              <h3 class="card__title">Sanal Thomas</h3>
+              <span class="card__status">1 hour ago</span>
+            </div>
+          </div>
+          <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="card">
+        <img src="img/exam new.jpg" class="card__image" alt="">
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+              <path />
+            </svg>
+            <img src="img/ad4.jpg" alt="" class="card__thumb">
+            <div class="card__header-text">
+              <h3 class="card__title">kim Cattrall</h3>
+              <span class="card__status">3 hour ago</span>
+            </div>
+          </div>
+          <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="card">
+        <img src="img/ad4.jpg" class="card__image" alt="">
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+              <path />
+            </svg>
+            <img src="img/ad3.jpg" alt="" class="card__thumb">
+            <div class="card__header-text">
+              <h3 class="card__title">Jessica Parker</h3>
+              <span class="card__status">1 hour ago</span>
+            </div>
+          </div>
+          <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="card">
+        <img src="img/ad2.jpg" class="card__image" alt="">
+        <div class="card__overlay">
+          <div class="card__header">
+            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+              <path />
+            </svg>
+            <img src="img/ad4.jpg" alt="" class="card__thumb">
+            <div class="card__header-text">
+              <h3 class="card__title">kim Cattrall</h3>
+              <span class="card__status">3 hour ago</span>
+            </div>
+          </div>
+          <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+
+</body>
+</html>
+
