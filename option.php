@@ -26,10 +26,10 @@ session_start();
     <a class="nav-link  text-dark" href="http://localhost/Bsg Site/myexams.php?q=0">My exams</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link  text-dark" href="#services">Create quiz</a>
+    <a class="nav-link  text-dark" href="create.html">Create quiz</a>
   </li>
  <li class="nav-item">
-    <a class="nav-link  text-dark" href="#services">Messages</a>
+    <a class="nav-link  text-dark" href="http://localhost/Bsg Site/message.php">Messages</a>
   </li>
 </ul>
 <div class="container  text-center pt-5">
@@ -70,7 +70,7 @@ while($records=mysqli_fetch_array($result_set))
       $i++;
 	echo"<div class='col-lg-4  col-md-6 p-lg-3 p-md-4 cards mx-auto'>
           <li>
-          <a href='http://localhost/project boot/question.php?qno=1&&title=".$record['tablename']."' class='card'>
+          <a href='http://localhost/Bsg Site/instructions.php?qno=1&&title=".$record['tablename']."' class='card'>
         <img src='img/exam new.jpg' class='card__image'>
         <div class='card__overlay'>
           <div class='card__header'>
@@ -130,7 +130,7 @@ while($records=mysqli_fetch_array($result_set))
       $i++;
   echo"<div class='col-lg-4  p-lg-3 cards mx-auto'>
           <li>
-          <a href='http://localhost/project/review.php?title=".$record['tablename']."' class='card'>
+          <a href='http://localhost/Bsg Site/review.php?title=".$record['tablename']."' class='card'>
         <img src='img/exam new.jpg' class='card__image'>
         <div class='card__overlay'>
           <div class='card__header'>

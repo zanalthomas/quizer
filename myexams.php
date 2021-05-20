@@ -27,10 +27,10 @@
     <a class="nav-link  text-dark" href="http://localhost/Bsg Site/myexams.php?q=0">My exams</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link  text-dark" href="#services">Create quiz</a>
+    <a class="nav-link  text-dark" href="create.html">Create quiz</a>
   </li>
  <li class="nav-item">
-    <a class="nav-link  text-dark" href="#services">Messages</a>
+    <a class="nav-link  text-dark" href="http://localhost/Bsg Site/message.php">Messages</a>
   </li>
 </ul>
 
@@ -57,7 +57,7 @@ if($count==0){
  echo "<p class='col-lg-4 text-dark col-sm-10 text-center mx-auto lead  py-3'><img class='img-responsive img-fluid py-4' src='img/welcome.svg' ><br>Look like you are new..you have nothing to display</p>";
  exit;
 }
-echo "<div class='container'>
+echo "<div class='container mt-4'>
   <div class='row mx-2'>";
 $i=1;
 while($record=mysqli_fetch_array($result_set))
@@ -79,8 +79,8 @@ while($record=mysqli_fetch_array($result_set))
           </div>
           <p class='card__description text-secondary'>Number of questions : ".$record['noq']."<br><br>
           <a class='mx-2' href='http://localhost/Bsg Site/myexams.php?q=1 && title=".$record['tablename']."'><i class='fas fa-users mx-2 ' title='Leaderboard'></i></a>
-          <a class='mx-4' href='http://localhost/project/invite.php?title=".$record['tablename']."'><i class='fas fa-bullhorn mx-2 ' title='Invite'></i></a>
-          <a href='http://localhost/project/myexams.php?q=2 && title=".$record['tablename']."'><i class='fas fa-trash-alt mx-2 ' title='Delete'></i></a>
+          <a class='mx-4' href='http://localhost/Bsg Site/invite.php?title=".$record['tablename']."'><i class='fas fa-bullhorn mx-2 ' title='Invite'></i></a>
+          <a href='http://localhost/Bsg Site/myexams.php?q=2 && title=".$record['tablename']."'><i class='fas fa-trash-alt mx-2 ' title='Delete'></i></a>
           </p>
         </div>
       </div>
@@ -111,7 +111,7 @@ else if($_GET['q']==1)
    $result_set=mysqli_query($db_handle,$sql);
    $count = mysqli_num_rows($result_set);
 if($count==0){
- echo "<p class='col-lg-4 text-dark col-sm-10 text-center mx-auto lead p-lg-0 p-sm-3'><img class='img-responsive img-fluid py-4' src='img/no data.svg' ><br>Nobody has attempted your quiz ".$title." . You can invite participants. <br> <a class='mt-4 w-20  mx-auto btn  btn-primary' href='http://localhost/project/invite.php?title=".$title."'>Invite participants</a></p>";
+ echo "<p class='col-lg-4 text-dark col-sm-10 text-center mx-auto lead p-lg-0 p-sm-3'><img class='img-responsive img-fluid py-4' src='img/no data.svg' ><br>Nobody has attempted your quiz ".$title." . You can invite participants. <br> <a class='mt-4 w-20  mx-auto btn  btn-primary' href='http://localhost/Bsg Site/invite.php?title=".$title."'>Invite participants</a></p>";
  exit;
 }
 $i=1;
@@ -130,7 +130,7 @@ while($record=mysqli_fetch_array($result_set))
   
 }
 echo "</table>";
-echo "<a class='mt-4 w-20  mx-auto btn  btn-primary' href='http://localhost/project/invite.php?title=".$title."'>Invite participants</a>
+echo "<a class='mt-4 w-20  mx-auto btn  btn-primary' href='http://localhost/Bsg Site/invite.php?title=".$title."'>Invite participants</a>
 <input class='mt-4 w-20  mx-auto btn  btn-secondary ' type='button' id='btnExport' value='Export to Excel sheet' />
   </div>";
 }
@@ -152,7 +152,7 @@ else if($_GET['q']==2)
    $result_set=mysqli_query($db_handle,$sql);
    $sql="drop view ans".$title."";
    $result_set=mysqli_query($db_handle,$sql);
-   header("location:http://localhost/project/myexams.php?q=0");
+   header("location:http://localhost/Bsg Site/myexams.php?q=0");
 }
 ?>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
