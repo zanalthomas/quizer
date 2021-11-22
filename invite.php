@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once "redirect.php";
 $title=$_GET['title'];
  if( isset($_POST['ajax'])){
     $db_handle =mysqli_connect( 'localhost', 'root', 'sanal','quizer');
@@ -30,7 +31,7 @@ $title=$_GET['title'];
 <body> 
 
   <ul class="nav bg-white py-2 px-lg-5">
-  <div class='navbar-brand d-flex align-items-center header text-dark'>Xam</div>
+  <div class='navbar-brand h2 d-flex align-items-center header text-dark'>Quizer</div>
   <li class="nav-item">
     <a class="nav-link text-dark" href="http://localhost/Bsg Site/option.php">Home</a>
   </li>
@@ -81,6 +82,7 @@ $title=$_GET['title'];
 function invite()
 {
                 var name =document.frm.inv.value;
+                alert('invitaion send');
                 if (name == null || name == "") {
                 document.getElementById("response").innerHTML="Username must be filled out.";
                  return false;

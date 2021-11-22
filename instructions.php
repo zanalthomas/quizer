@@ -10,6 +10,8 @@
 	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style type="text/css">
     	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
     	:root {
@@ -158,31 +160,31 @@
 </head>
 <body>
   <ul class="nav bg-white py-2 px-lg-5">
-  <div class='navbar-brand d-flex align-items-center header text-dark'>Xam</div>
-  <li class="nav-item">
+  <div data-aos="fade-right" class='navbar-brand h2 d-flex align-items-center header text-dark'>Quizer</div>
+  <li  data-aos="fade-right" data-aos-delay="100" class="nav-item">
     <a class="nav-link text-dark" href="http://localhost/Bsg Site/option.php">Home</a>
   </li>
-  <li class="nav-item">
+  <li data-aos="fade-right" data-aos-delay="200" class="nav-item">
     <a class="nav-link  text-dark" href="http://localhost/Bsg Site/myexams.php?q=0">My exams</a>
   </li>
-  <li class="nav-item">
+  <li data-aos="fade-right" data-aos-delay="300" class="nav-item">
     <a class="nav-link  text-dark" href="create.html">Create quiz</a>
   </li>
- <li class="nav-item">
+ <li data-aos="fade-right" data-aos-delay="400" class="nav-item">
     <a class="nav-link  text-dark" href="http://localhost/Bsg Site/message.php">Messages</a>
   </li>
 </ul>
   <div class="container text-center pt-3">
    <div class="row pt-5">
       <div class="col-lg-7 mx-auto">
-        <h1 class="fw-light">Note the Point</h1>
-        <div class="lead text-muted">
+        <h1 data-aos="fade-up" data-aos-delay="500" class="fw-light">Note the Point</h1>
+        <div data-aos="fade-up" data-aos-delay="600" class="lead text-muted">
            Read these instructions carefully before you start your exam.
         </div>
       </div> 
     </div>
 </div>
-  <div class="container">
+  <div data-aos="fade-up" data-aos-delay="700" class="container">
   	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mx-2">
   		<div class="col-lg-8 col-sm-8 mx-auto mt-5 shade py-2 px-5">
   			<div class="py-2 px-lg-3 px-sm-1">
@@ -258,12 +260,13 @@ echo "
 		Continue
 	</a>";
   ?>
-	<button class="btn btn-secondary">
-		More Details
-	</button>
+		<a class="btn btn-secondary" href="http://localhost/Bsg Site/option.php">Cancel</a>
 	</div>	
 	</div>
 	</div>
 	</div>
+   <script>
+  AOS.init();
+</script>
 </body>
 </html>

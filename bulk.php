@@ -10,6 +10,7 @@
 
 <?php
 session_start();
+include_once "redirect.php";
 use Phppot\DataSource;
 $conn =mysqli_connect( 'localhost', 'root', 'sanal','quizer');
 $title=$_GET['title'];
@@ -23,30 +24,6 @@ if (isset($_POST["import"])) {
         
         while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
 			    
-            $sql = "INSERT into invitation (frm,username,title)
-                   values ('".$_SESSION['username']."','".$column[0]."','".$title."')";
-           $result_set=mysqli_query($conn,$sql);
-            
-            if (! empty($result_set)) {
-                $type = "success";
-                $message = "CSV Data Imported into the Database";
-            } else {
-                $type = "error";
-                $message = "Problem in Importing CSV Data";
-            }
-        }
-    }
-}
-if (isset($_POST["import"])) {
-    
-    $fileName = $_FILES["file"]["tmp_name"];
-    
-    if ($_FILES["file"]["size"] > 0) {
-        
-        $file = fopen($fileName, "r");
-        
-        while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
-                
             $sql = "INSERT into invitation (frm,username,title)
                    values ('".$_SESSION['username']."','".$column[0]."','".$title."')";
            $result_set=mysqli_query($conn,$sql);

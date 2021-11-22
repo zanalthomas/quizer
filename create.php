@@ -76,9 +76,13 @@ if($_GET['q']==1)
 {
 $nq=intval($_POST['noq']);
 $title=$_POST['title'];
+$filename = $_FILES['image']['name'];
+$tempname = $_FILES["image"]["tmp_name"];    
 echo "<div id='result'></div>
-<form name='frmq' method='post' action='create.php?q=2&&noq=".$nq."' onSubmit='return validateForm()'><div class='gfg-input-fields'>";
+<form enctype='multipart/form-data' name='frmq' method='post' action='create.php?q=2&&noq=".$nq."' onSubmit='return validateForm()'><div class='gfg-input-fields'>";
 echo "<input class='visually-hidden'  name='title' value='".$title."'>"; 
+echo "<input class='visually-hidden'  name='filename' value='".$filename."'>";
+echo "<input class='visually-hidden'  name='tempname' value='".$tempname."'>";
 for($i=1;$i<=$nq;$i++)
 {
     echo "<div class='container'>
@@ -153,7 +157,10 @@ else if($_GET['q']==2)
 $nq=intval($_GET['noq']);
 $title=$_POST['title'];
 $user=$_SESSION['username'];
-
+$filename=$_POST['filename'];
+$tempname=$_POST['tempname'];
+$folder = "img/".$filename;
+move_uploaded_file($tempname, $folder);
  if( isset($_POST['ajax'])){
     $db_handle =mysqli_connect( 'localhost', 'root', 'sanal','quizer');
     $sql="insert into invitation(frm,username) values('".$_SESSION['username']."','".$_POST['name']."')";
@@ -162,14 +169,13 @@ $user=$_SESSION['username'];
     exit;
 }
 $db_handle =mysqli_connect( 'localhost', 'root', 'sanal','quizer');
-$sql="INSERT INTO exam(username,tablename,status,noq) VALUES('".$user."','".$title."','dis',".$nq.")";
+$sql="INSERT INTO exam(username,tablename,status,noq,thumb) VALUES('".$user."','".$title."','dis',".$nq.",'".$filename."')";
 $result_set=mysqli_query($db_handle,$sql);
-$tablename=$title;
+$sql="select * from exam where tablename='".$title."' and username='".$_SESSION['username']."' order by sino desc";
+$result_set=mysqli_query($db_handle,$sql);
+while($records=mysqli_fetch_array($result_set))
+{ $tablename=$records['sino'];break;}
 echo $tablename;
-$sql="create view ".$tablename." as select qno,question,opt1,opt2,opt3,opt4,time,ans from questions where tablename='".$tablename."'";
-$result_set=mysqli_query($db_handle,$sql);
-$sql="create view ans".$tablename." as select user,answer,qno,tablename from answers where tablename='".$tablename."'";
-$result_set=mysqli_query($db_handle,$sql);
 $number = count($_POST["input_field"]);  
  if($number > 0)  
  {  
@@ -182,7 +188,7 @@ $result_set=mysqli_query($db_handle,$sql);
 }
 }
  echo "Data Inserted";  
- header("location:http://localhost/project/invite.php?title=".$title."");
+ header("location:http://localhost/Bsg Site/invite.php?title=".$tablename."");
  }  
  else  
  {  

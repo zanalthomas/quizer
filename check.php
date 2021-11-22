@@ -18,17 +18,20 @@ if ($count == 1) {
 }
 else
 {
-	session_start();
 	$user=$_POST['username'];
 $pass=$_POST['password'];
 $db_handle =mysqli_connect( 'localhost', 'root', 'sanal','quizer');
-$sql="insert into users(username,password) values ('".$user."','".$pass."')";
+$filename = $_FILES['image']['name'];
+    $tempname = $_FILES["image"]["tmp_name"];    
+        $folder = "img/".$filename;
+move_uploaded_file($tempname, $folder);
+$sql="insert into users(username,password,profile) values ('".$user."','".$pass."','".$filename."')";
 $result_set=mysqli_query($db_handle,$sql);
 $sql="insert into answers(user) values ('".$user."')";
 $result_set=mysqli_query($db_handle,$sql);
 
     $_SESSION['username']     = $user;
     echo $_SESSION['username'];
-    header('location:http://localhost/project/option.php');
+  header('location:http://localhost/Bsg Site/option.php');
 }
 ?>

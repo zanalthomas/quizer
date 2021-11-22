@@ -1,6 +1,6 @@
 <html>
 	<head>
-    <title>Home</title>
+    <title>Quizer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/style.css" rel="stylesheet">
@@ -38,25 +38,34 @@
     		color:green;
     	}
     </style>
+    <script type="text/javascript">
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
 </head>
 <body>
 <?php
 session_start();
+include_once "redirect.php";
 $db_handle =mysqli_connect( 'localhost', 'root', 'sanal','quizer');
 $title=$_GET['title'];
 $n=$_GET['qno'];
 if( isset($_POST['ajax'])){
     echo $_POST['ajax'];
-    $sql="select username from exam where tablename='".$title."'";
+    date_default_timezone_set("Asia/Kolkata");
+    $sql="select * from exam where sino='".$title."'";
     $result_set=mysqli_query($db_handle,$sql);
     $record=mysqli_fetch_array($result_set);
     $destination=$record['username'];
-    $sql="insert into messages(dto,message) values('".$destination."','".$_SESSION['username']." has attempted plagarism in your quiz ".$title." at question ".$n."')";
+    $tablename=$record['tablename'];
+    $sql="insert into messages(dto,message,dfrom,dt) values('".$destination."','has made an attempt of cheating in your quiz ".$tablename." at question ".$n."','".$_SESSION['username']."','".date("y-m-d H:i:s")."')";
     $result_set=mysqli_query($db_handle,$sql);
     exit;
 }
 $n=$_GET['qno'];
-$sql="select noq from exam where tablename='".$title."'";
+$sql="select noq from exam where sino='".$title."'";
 $result_set=mysqli_query($db_handle,$sql);
 $records=mysqli_fetch_array($result_set);
 $noq=$records['noq'];
@@ -73,7 +82,7 @@ $result_set=mysqli_query($db_handle,$sql);
 }
 if($n<=$noq)
 {
-$sql="select * from ".$title." where qno='".$n."'";
+$sql="select * from questions where tablename=".$title." and qno='".$n."'";
 $result_set=mysqli_query($db_handle,$sql);
 $records=mysqli_fetch_array($result_set);
 $k=$n+1;
